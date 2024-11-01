@@ -3,7 +3,6 @@ command = "npm install && npm run build"
 functions = "functions"
 [functions]
 external_node_modules = ["express"]
-included_files=["./functions/Fitness.Entrainement.json"]
 node_bundler = "esbuild"
 [[redirects]]
 force = true
