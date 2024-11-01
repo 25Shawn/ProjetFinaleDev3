@@ -6,7 +6,7 @@ import { env } from 'process';
 // **** Functions **** //
 
 /**
- * Get one user.
+ * Aller chercher une seule seance.
  */
 async function getOne(id: number): Promise<ISeance | null> {
   console.log(id);
@@ -18,7 +18,7 @@ async function getOne(id: number): Promise<ISeance | null> {
 
 
 /**
- * Get all users.
+ * Aller chercher toutes les seances.
  */
 async function getAll(): Promise<ISeance[]> {
   await mongoose.connect(process.env.MONGO_URI as string)
@@ -27,6 +27,12 @@ async function getAll(): Promise<ISeance[]> {
   return Seances;
 }
 
+/**
+ * Aller chercher une seule seance par type et intensite.
+ * @param type type d'exercice
+ * @param intensite intensite de l'exercice
+ * @returns une moyenne du temps d'exercice pour le type d'exercice et l'intensité de l'exercice
+ */
 async function getMoyenneTempsIntensite(type: string, intensite: string): Promise<number> {
   try {
     await mongoose.connect(process.env.MONGO_URI as string);
@@ -54,14 +60,16 @@ async function getMoyenneTempsIntensite(type: string, intensite: string): Promis
     return moyenne[0]?.moyenne ?? 0;
   } catch (error) {
     console.error('Error calculating average duration:', error);
-    return 0; // Return 0 in case of error
+    return 0; 
   } finally {
-    mongoose.connection.close(); // Ensure connection is closed in the end
+    mongoose.connection.close();
   }
 }
 
 /**
- * Add one user.
+ * Ajouter une nouvelle seance.
+ * @param seance une nouvelle seance
+ * @returns l'identifiant de la nouvelle seance
  */
 async function add(seance: ISeance): Promise<number> {
 
@@ -87,21 +95,17 @@ async function add(seance: ISeance): Promise<number> {
 }
 
 /**
- * Update a user.
+ * Mettre a jour une seance.
+ * @param seance une seance
+ * @returns la nouvelle seance
  */
 async function update(seance: ISeance): Promise<ISeance | null> {
     
   await mongoose.connect(process.env.MONGO_URI as string);
 
   if (!seance) {
-    console.log("Séance non définie");
     return null;
   }
-
-  console.log("Identifiant de la séance:", seance.identifiant);
-
- 
-
 
   const updateSeance = await Seance.findOneAndUpdate(
     { identifiant: seance.identifiant },
@@ -126,6 +130,11 @@ async function update(seance: ISeance): Promise<ISeance | null> {
   mongoose.connection.close();
   return updateSeance;
 }
+/**
+ * Test si une seance existe.
+ * @param id identifiant de la seance
+ * @returns true si la seance existe, false sinon
+*/
 async function persists(id: number): Promise<boolean> {
   await mongoose.connect(process.env.MONGODB_URI!);
   const uneSeance = await Seance.findOne({identifiant: id});
@@ -133,6 +142,11 @@ async function persists(id: number): Promise<boolean> {
   return uneSeance !== null;
 }
 
+/**
+ * Supprimer une seance.
+ * @param id identifiant de la seance
+ * @returns true si la seance a été supprimée, false sinon
+ */
 async function deleteSeance(id: number): Promise<boolean> {
   await mongoose.connect(process.env.MONGO_URI as string);
   const result = await Seance.deleteOne({ identifiant: id });

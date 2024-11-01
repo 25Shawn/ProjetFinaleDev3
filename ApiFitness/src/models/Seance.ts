@@ -1,6 +1,7 @@
 import moment from 'moment';
 import mongoose, { Schema, model } from 'mongoose';
 
+
 export interface ISeance {
   identifiant: number;
   date: Date;

@@ -1,0 +1,176 @@
+[{
+  "_id": {
+    "$oid": "66eb37b7ab3c4456c8d66df0"
+  },
+  "identifiant": 1,
+  "date": "2024-09-18",
+  "typeExercice": "Course",
+  "duration": "45 minutes",
+  "caloriesBrulees": 450,
+  "distance": "5 km",
+  "objectifSession": "Avoir une meilleure endurance",
+  "niveauIntensite": "Moderee",
+  "completer": true,
+  "commentaire":[
+    "Bonne session, mais fatigue en fin de parcours."
+  ]
+},
+{
+  "_id": {
+    "$oid": "66eb37b7ab3c4456c8d66df1"
+  },
+  "identifiant": 2,
+  "date": "2024-09-19",
+  "typeExercice": "Musculation",
+  "duration": "60 minutes",
+  "caloriesBrulees": 600,
+  "distance": null,
+  "objectifSession": "Avoir des muscles plus forts",
+  "niveauIntensite": "Intense",
+  "completer": true,
+  "commentaire":[
+    "Bonne session, j'ai les bras en feu!"
+  ]
+},
+{
+  "_id": {
+    "$oid": "66eb37b7ab3c4456c8d66df2"
+  },
+  "identifiant": 3,
+  "date": "2024-09-20",
+  "typeExercice": "Natation",
+  "duration": "30 minutes",
+  "caloriesBrulees": 300,
+  "distance": "1 km",
+  "objectifSession": "Améliorer la technique",
+  "niveauIntensite": "Moderee",
+  "completer": true,
+  "commentaire":[
+    "Bonne session, mais fatigue en fin de parcours."
+  ]
+},
+{
+  "_id": {
+    "$oid": "66eb37b7ab3c4456c8d66df3"
+  },
+  "identifiant": 4,
+  "date": "2024-09-21",
+  "typeExercice": "Yoga",
+  "duration": "40 minutes",
+  "caloriesBrulees": 150,
+  "distance": null,
+  "objectifSession": "Améliorer la flexibilité",
+  "niveauIntensite": "Faible",
+  "completer": true,
+  "commentaire":[
+    "Bonne session, je me sens tellement mieux",
+    "J'ai hâte d'en refaire."
+  ]
+},
+{
+  "_id": {
+    "$oid": "66eb37b7ab3c4456c8d66df4"
+  },
+  "identifiant": 5,
+  "date": "2024-09-22",
+  "typeExercice": "Cyclisme",
+  "duration": "90 minutes",
+  "caloriesBrulees": 700,
+  "distance": "30 km",
+  "objectifSession": "Renforcer l'endurance cardio",
+  "niveauIntensite": "Intense",
+  "completer": true,
+  "commentaire":[
+    "Bonne session, mais fatigue en fin de parcours.",
+    "Distance impressionnante, à refaire."
+  ]
+},
+{
+  "_id": {
+    "$oid": "66eb37b7ab3c4456c8d66df5"
+  },
+  "identifiant": 6,
+  "date": "2024-09-23",
+  "typeExercice": "Course",
+  "duration": "50 minutes",
+  "caloriesBrulees": 500,
+  "distance": "6 km",
+  "objectifSession": "Augmenter la vitesse",
+  "niveauIntensite": "Moderee",
+  "completer": true,
+  "commentaire":[
+    "Bonne session, mais fatigue en fin de parcours.",
+    "Distance impressionnante, à refaire."
+  ]
+},
+{
+  "_id": {
+    "$oid": "66eb37b7ab3c4456c8d66df6"
+  },
+  "identifiant": 7,
+  "date": "2024-09-24",
+  "typeExercice": "Musculation",
+  "duration": "75 minutes",
+  "caloriesBrulees": 650,
+  "distance": null,
+  "objectifSession": "Développer la force musculaire",
+  "niveauIntensite": "Intense",
+  "completer": true,
+  "commentaire":[
+    "Bonne session, j'ai les jambes qui tremble",
+    "Je vais clairement le refaire."
+  ]
+},
+{
+  "_id": {
+    "$oid": "66eb37b7ab3c4456c8d66df7"
+  },
+  "identifiant": 8,
+  "date": "2024-09-25",
+  "typeExercice": "Natation",
+  "duration": "35 minutes",
+  "caloriesBrulees": 320,
+  "distance": "1.2 km",
+  "objectifSession": "Améliorer l'endurance",
+  "niveauIntensite": "Moderee",
+  "completer": true,
+  "commentaire":[
+    "Bonne session, mais fatigue en fin de parcours.",
+    "Distance impressionnante, à refaire."
+  ]
+},
+{
+  "_id": {
+    "$oid": "66eb37b7ab3c4456c8d66df8"
+  },
+  "identifiant": 9,
+  "date": "2024-09-26",
+  "typeExercice": "Yoga",
+  "duration": "50 minutes",
+  "caloriesBrulees": 180,
+  "distance": null,
+  "objectifSession": "Réduire le stress",
+  "niveauIntensite": "Faible",
+  "completer": true,
+  "commentaire":[
+    "Bonne session, Je me sens tellement mieux."
+  ]
+},
+{
+  "_id": {
+    "$oid": "66eb37b7ab3c4456c8d66df9"
+  },
+  "identifiant": 10,
+  "date": "2024-09-27",
+  "typeExercice": "Cyclisme",
+  "duration": "120 minutes",
+  "caloriesBrulees": 800,
+  "distance": "40 km",
+  "objectifSession": "Améliorer l'endurance",
+  "niveauIntensite": "Intense",
+  "completer": true,
+  "commentaire":[
+    "Bonne session, mais fatigue en fin de parcours.",
+    "Distance impressionnante, à refaire."
+  ]
+}]
