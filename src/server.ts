@@ -18,6 +18,7 @@ import EnvVars from '@src/common/EnvVars';
 import HttpStatusCodes from '@src/common/HttpStatusCodes';
 import { RouteError } from '@src/common/classes';
 import { NodeEnvs } from '@src/common/misc';
+import cors from 'cors';
 
 
 // **** Variables **** //
@@ -26,7 +27,7 @@ const app = express();
 
 
 // **** Setup **** //
-
+//app.use(cors());
 // Basic middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -67,3 +68,4 @@ app.use((
 // **** Export default **** //
 
 export default app;
+

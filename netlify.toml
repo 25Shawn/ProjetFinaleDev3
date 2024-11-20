@@ -1,14 +1,17 @@
 [build]
-command = "npm install && npm run build"
-functions = "functions"
+command = "npm install && npm run build"  # Installation des dépendances et construction du projet
+functions = "functions"  # Dossier des fonctions serverless
+
 [functions]
-external_node_modules = ["express"]
-node_bundler = "esbuild"
-[[redirects]]
+external_node_modules = ["express"]  # Inclure express dans le bundle de la fonction
+node_bundler = "esbuild"  # Utilisation de 'esbuild' pour le bundling du code
+
+[[redirects]]  # Redirections pour les routes spécifiques
 force = true
 from = "/fitness/*"
 status = 200
 to = "/.netlify/functions/fitness/:splat"
+
 [[redirects]]
 force = true
 from = "/images/*"
