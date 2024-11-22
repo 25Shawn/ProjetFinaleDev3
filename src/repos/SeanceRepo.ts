@@ -1,5 +1,6 @@
 import { ISeance, Seance } from '@src/models/Seance';
 import { getRandomInt } from '@src/util/misc';
+import { Utilisateur, IUtilisateur } from '@src/models/Utilisateur';
 import mongoose from 'mongoose';
 import { env } from 'process';
 
@@ -8,10 +9,9 @@ import { env } from 'process';
 /**
  * Aller chercher une seule seance.
  */
-async function getOne(id: number): Promise<ISeance | null> {
-  console.log(id);
+async function getOne(idSeance: number, idUtilisateur: number): Promise<ISeance | null> {
   await mongoose.connect(process.env.MONGO_URI as string)
-  const uneSeance = await Seance.findOne({ identifiant: id });
+  const uneSeance = await Seance.findOne({ identifiant: idSeance, idUtilisateur: idUtilisateur });
   mongoose.connection.close();
   return uneSeance;
 }
@@ -20,15 +20,15 @@ async function getOne(id: number): Promise<ISeance | null> {
 /**
  * Aller chercher toutes les seances.
  */
-async function getAll(): Promise<ISeance[]> {
+async function getAll(idUtilisateur: number): Promise<ISeance[]> {
   await mongoose.connect(process.env.MONGO_URI as string)
-  const Seances = await Seance.find();
+  const Seances = await Seance.find({ idUtilisateur: idUtilisateur });
   mongoose.connection.close();
   return Seances;
 }
 
 /**
- * Aller chercher une seule seance par type et intensite.
+ * Calculer la moyenne de la durée des séances pour un type d'exercice et une intensité données.
  * @param type type d'exercice
  * @param intensite intensite de l'exercice
  * @returns une moyenne du temps d'exercice pour le type d'exercice et l'intensité de l'exercice
@@ -66,6 +66,37 @@ async function getMoyenneTempsIntensite(type: string, intensite: string): Promis
   }
 }
 
+
+async function getTypeEntrainement(type: string): Promise<ISeance[]> {
+  await mongoose.connect(process.env.MONGO_URI as string)
+  const Seances = await Seance.find({ typeExercice: type });
+  mongoose.connection.close();
+  return Seances;
+}
+
+async function ajouterUtilisateur(utilisateur: IUtilisateur): Promise<number> {
+  await mongoose.connect(process.env.MONGO_URI as string)
+  utilisateur.identifiant = getRandomInt();
+
+  const nouvelleSeance = new Utilisateur(
+    {
+      identifiant: utilisateur.identifiant,
+      username: utilisateur.username,
+      password: utilisateur.password
+    });
+  console.log(nouvelleSeance);
+  const resultat = await nouvelleSeance.save();
+  mongoose.connection.close();
+  return resultat.identifiant;
+}
+
+async function getAllUsers(): Promise<IUtilisateur[]> {
+  await mongoose.connect(process.env.MONGO_URI as string)
+  const utilisateurs = await Utilisateur.find();
+  mongoose.connection.close();
+  return utilisateurs;
+}
+
 /**
  * Ajouter une nouvelle seance.
  * @param seance une nouvelle seance
@@ -78,6 +109,7 @@ async function add(seance: ISeance): Promise<number> {
 
   const nouvelleSeance = new Seance({
     identifiant: seance.identifiant,
+    idUtilisateur: seance.idUtilisateur,
     date: seance.date,
     typeExercice: seance.typeExercice,
     duration: seance.duration,
@@ -163,6 +195,9 @@ export default {
   getOne,
   getAll,
   getMoyenneTempsIntensite,
+  getTypeEntrainement,
+  ajouterUtilisateur,
+  getAllUsers,
   add,
   update,
   deleteSeance,

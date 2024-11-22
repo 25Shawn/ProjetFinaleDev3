@@ -4,6 +4,7 @@ import mongoose, { Schema, model } from 'mongoose';
 
 export interface ISeance {
   identifiant: number;
+  idUtilisateur: number;
   date: Date;
   typeExercice: string;
   duration: string;
@@ -17,6 +18,7 @@ export interface ISeance {
 
 const SeanceSchema = new Schema<ISeance>({
   identifiant: { type: Number, required: [true, "L'identifiant est requis"] },
+  idUtilisateur: { type: Number, required: [true, "L'identifiant de l'utilisateur est requis"] },
   date: { type: Date, required:true,  validate: {
     validator: (value: Date) => value <= new Date(),
     message: 'La date ne peut pas être dans le futur.'
@@ -37,6 +39,7 @@ export const Seance = model<ISeance>('Entrainement', SeanceSchema);
 export function isSeance(arg: unknown): arg is ISeance {
   return typeof arg === 'object' && arg !== null &&
     'identifiant' in arg && typeof (arg as any).identifiant === 'number' &&
+    'idUtilisateur' in arg && typeof (arg as any).idUtilisateur === 'number' &&
     'date' in arg && moment((arg as any).date).isValid() &&
     'typeExercice' in arg && typeof (arg as any).typeExercice === 'string' &&
     'duration' in arg && typeof (arg as any).duration === 'string' &&

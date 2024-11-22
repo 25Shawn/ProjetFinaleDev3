@@ -19,7 +19,7 @@ import HttpStatusCodes from '@src/common/HttpStatusCodes';
 import { RouteError } from '@src/common/classes';
 import { NodeEnvs } from '@src/common/misc';
 import cors from 'cors';
-
+import authenticateToken from './util/authenticateToken';
 
 // **** Variables **** //
 
@@ -32,6 +32,8 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser(EnvVars.CookieProps.Secret));
+
+
 
 // Show routes called in console during development
 if (EnvVars.NodeEnv === NodeEnvs.Dev.valueOf()) {
@@ -64,7 +66,7 @@ app.use((
   return res.status(status).json({ error: err.message });
 });
 
-
+app.use(authenticateToken);
 // **** Export default **** //
 
 export default app;

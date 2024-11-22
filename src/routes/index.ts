@@ -3,6 +3,8 @@ import HttpStatusCodes from '@src/common/HttpStatusCodes';
 import Paths from '../common/Paths';
 import SeanceRoutes from './SeanceRoutes';
 import { Seance } from '@src/models/Seance';
+import JetonsRoutes from './JetonsRoutes';
+import authenticateToken from '@src/util/authenticateToken';
 
 
 // **** Variables **** //
@@ -41,15 +43,27 @@ function validateSeance(req: Request, res: Response, next: NextFunction) {
 // Init router
 const userRouter = Router();
 // Get all users
-userRouter.get(Paths.Seance.Get, SeanceRoutes.getAllSeance);
-userRouter.get(Paths.Seance.GetOne, SeanceRoutes.getOneSeance);
-userRouter.get(Paths.Seance.GetMoyenneTempsIntensite, SeanceRoutes.getMoyenneTempsIntensite);
-userRouter.post(Paths.Seance.Add, validateSeance, SeanceRoutes.addSeance);
-userRouter.put(Paths.Seance.Update, validateSeance, SeanceRoutes.updateSeance);
-userRouter.delete(Paths.Seance.Delete, SeanceRoutes.deleteSeance);
+userRouter.get(Paths.Seance.Get, authenticateToken, SeanceRoutes.getAllSeance);
+userRouter.get(Paths.Seance.GetOne,authenticateToken, SeanceRoutes.getOneSeance);
+userRouter.get(Paths.Seance.GetMoyenneTempsIntensite,authenticateToken, SeanceRoutes.getMoyenneTempsIntensite);
+userRouter.get(Paths.Seance.GetTypeEntrainement,authenticateToken, SeanceRoutes.getTypeEntrainement);
+
+userRouter.get(Paths.Seance.GetAllUsers, SeanceRoutes.getAllUsers);
+userRouter.post(Paths.Seance.AddUser, SeanceRoutes.ajouterUtilisateur);
+
+userRouter.post(Paths.Seance.Add,authenticateToken, validateSeance, SeanceRoutes.addSeance);
+userRouter.put(Paths.Seance.Update,authenticateToken, validateSeance, SeanceRoutes.updateSeance);
+userRouter.delete(Paths.Seance.Delete,authenticateToken, SeanceRoutes.deleteSeance);
 
 // Add UserRouter
 apiRouter.use(Paths.Seance.Base, userRouter);
+
+
+const jetonsRouter = Router();
+
+jetonsRouter.post(Paths.GenerateToken.Base, JetonsRoutes.generateToken);
+
+apiRouter.use(Paths.GenerateToken.Get, jetonsRouter);
 
 
 // **** Export default **** //
