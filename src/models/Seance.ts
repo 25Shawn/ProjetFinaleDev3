@@ -17,7 +17,6 @@ export interface ISeance {
 }
 
 const SeanceSchema = new Schema<ISeance>({
-  identifiant: { type: Number, required: [true, "L'identifiant est requis"] },
   idUtilisateur: { type: Number, required: [true, "L'identifiant de l'utilisateur est requis"] },
   date: { type: Date, required:true,  validate: {
     validator: (value: Date) => value <= new Date(),
@@ -38,7 +37,6 @@ export const Seance = model<ISeance>('Entrainement', SeanceSchema);
 
 export function isSeance(arg: unknown): arg is ISeance {
   return typeof arg === 'object' && arg !== null &&
-    'identifiant' in arg && typeof (arg as any).identifiant === 'number' &&
     'idUtilisateur' in arg && typeof (arg as any).idUtilisateur === 'number' &&
     'date' in arg && moment((arg as any).date).isValid() &&
     'typeExercice' in arg && typeof (arg as any).typeExercice === 'string' &&
