@@ -9,6 +9,7 @@ export interface IUtilisateur {
 }
 
 const UtilisateurSchema = new Schema<IUtilisateur>({
+  identifiant: { type: Number, required: [true, "L'identifiant est requis"] },
   username: { type: String, required: [true, "Le username est requis"] },
   password: { type: String, required: [true, "Le password est requis"] },
 });

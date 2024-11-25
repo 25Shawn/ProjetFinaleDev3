@@ -43,7 +43,7 @@ function validateSeance(req: Request, res: Response, next: NextFunction) {
 // Init router
 const userRouter = Router();
 // Get all users
-userRouter.get(Paths.Seance.Get, authenticateToken, SeanceRoutes.getAllSeance);
+userRouter.get(Paths.Seance.Get,authenticateToken, SeanceRoutes.getAllSeance);
 userRouter.get(Paths.Seance.GetOne,authenticateToken, SeanceRoutes.getOneSeance);
 userRouter.get(Paths.Seance.GetMoyenneTempsIntensite,authenticateToken, SeanceRoutes.getMoyenneTempsIntensite);
 userRouter.get(Paths.Seance.GetTypeEntrainement,authenticateToken, SeanceRoutes.getTypeEntrainement);
@@ -61,9 +61,9 @@ apiRouter.use(Paths.Seance.Base, userRouter);
 
 const jetonsRouter = Router();
 
-jetonsRouter.post(Paths.GenerateToken.Base, JetonsRoutes.generateToken);
+jetonsRouter.post(Paths.GenerateToken.Get, JetonsRoutes.generateToken);
 
-apiRouter.use(Paths.GenerateToken.Get, jetonsRouter);
+apiRouter.use(Paths.GenerateToken.Base, jetonsRouter);
 
 
 // **** Export default **** //

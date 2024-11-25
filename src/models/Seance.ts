@@ -17,7 +17,8 @@ export interface ISeance {
 }
 
 const SeanceSchema = new Schema<ISeance>({
-  idUtilisateur: { type: Number, required: [true, "L'identifiant de l'utilisateur est requis"] },
+  identifiant: { type: Number},
+  idUtilisateur: { type: Number},
   date: { type: Date, required:true,  validate: {
     validator: (value: Date) => value <= new Date(),
     message: 'La date ne peut pas être dans le futur.'
@@ -27,7 +28,7 @@ const SeanceSchema = new Schema<ISeance>({
   caloriesBrulees: { type: Number, required: [true, "Le nombre de calorie brulées est requis" ], min:0 },
   distance: { type: String, required: false},
   objectifSession: { type: String, required: [true, "L'objectif de la session d'entrainement est requis"] },
-  niveauIntensite: { type: String, required: [true, "Le niveau d'intensité est requis"] },
+  niveauIntensite: { type: String, required: [true, "Le niveau d'intensité est requis"], enum: ['Faible', 'Modérée', 'Élevée'] },
   completer: { type: Boolean, required: [true, "Mettre l'entrainement completer est requis"] },
   commentaire: { type: [String], required: [true, "Les commentaires sont requis pour voir votre amélioration dans votre attitude"] }
 });
@@ -37,7 +38,6 @@ export const Seance = model<ISeance>('Entrainement', SeanceSchema);
 
 export function isSeance(arg: unknown): arg is ISeance {
   return typeof arg === 'object' && arg !== null &&
-    'idUtilisateur' in arg && typeof (arg as any).idUtilisateur === 'number' &&
     'date' in arg && moment((arg as any).date).isValid() &&
     'typeExercice' in arg && typeof (arg as any).typeExercice === 'string' &&
     'duration' in arg && typeof (arg as any).duration === 'string' &&

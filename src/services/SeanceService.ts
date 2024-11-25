@@ -23,17 +23,17 @@ function getOne(idSeance: number, idUtilisateur: number): Promise<ISeance | null
   return SeanceRepo.getOne(idSeance, idUtilisateur);
 }
 
-function getMoyenneTempsIntensite(type: string, intensite: string): Promise<number> {
-  return SeanceRepo.getMoyenneTempsIntensite(type, intensite);
+function getMoyenneTempsIntensite(type: string, intensite: string, idUtilisateur: number): Promise<number> {
+  return SeanceRepo.getMoyenneTempsIntensite(type, intensite, idUtilisateur);
 }
 
-function getTypeEntrainement(type: string): Promise<ISeance[]> {
-  return SeanceRepo.getTypeEntrainement(type);
+function getTypeEntrainement(type: string, idUtilisateur: number): Promise<ISeance[]> {
+  return SeanceRepo.getTypeEntrainement(type, idUtilisateur);
 }
 
 
-function addOne(Seance: ISeance): Promise<number> {
-  return SeanceRepo.add(Seance);
+function addOne(Seance: ISeance, idUtilisateur: number): Promise<number> {
+  return SeanceRepo.add(Seance, idUtilisateur);
 }
 
 function ajouterUtilisateur(utilisateur: IUtilisateur): Promise<number> {
@@ -52,8 +52,8 @@ async function updateOne(Seance: ISeance): Promise<ISeance | null> {
   return SeanceRepo.update(Seance);
 }
 
-async function deleteSeance(id: number): Promise<boolean> {
-  return SeanceRepo.deleteSeance(id);
+async function deleteSeance(id: number, idUtilisateur: number): Promise<boolean> {
+  return SeanceRepo.deleteSeance(id, idUtilisateur);
 }
 
 
