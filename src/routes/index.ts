@@ -7,7 +7,7 @@ import JetonsRoutes from './JetonsRoutes';
 import authenticateToken from '@src/util/authenticateToken';
 
 
-// **** Variables **** //
+
 
 const apiRouter = Router();
 

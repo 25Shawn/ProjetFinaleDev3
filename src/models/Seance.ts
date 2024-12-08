@@ -28,7 +28,7 @@ const SeanceSchema = new Schema<ISeance>({
   caloriesBrulees: { type: Number, required: [true, "Le nombre de calorie brulées est requis" ], min:0 },
   distance: { type: String, required: false},
   objectifSession: { type: String, required: [true, "L'objectif de la session d'entrainement est requis"] },
-  niveauIntensite: { type: String, required: [true, "Le niveau d'intensité est requis"], enum: ['Faible', 'Modérée', 'Élevée'] },
+  niveauIntensite: { type: String, required: [true, "Le niveau d'intensité est requis"], enum: ['Faible', 'Moderee', 'Elevee'] },
   completer: { type: Boolean, required: [true, "Mettre l'entrainement completer est requis"] },
   commentaire: { type: [String], required: [true, "Les commentaires sont requis pour voir votre amélioration dans votre attitude"] }
 });

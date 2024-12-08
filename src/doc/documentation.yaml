@@ -1,0 +1,625 @@
+openapi: 3.0.0
+info:
+  title: Documentation API Fitness
+  version: 1.0.0
+servers:
+  - description: Local
+    url: http://localhost:3000/fitness
+  - description: Production
+    url: https://fitness-api.onrender.com/fitness
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    Seance:
+      type: object
+      properties:
+        id:
+          type: number
+          description: Identifiant unique de la séance
+        idUtilisateur:
+          type: number
+          description: Identifiant de l’utilisateur qui a fait la séance
+        date:
+          type: string
+          format: date
+          description: Date de la séance
+        typeExercice:
+          type: string
+          description: Type d’exercice réalisé
+        duration:
+          type: string
+          description: Durée de la séance
+        caloriesBrulees:
+          type: number
+          description: Calories brûlées durant la séance
+        distance:
+          type: string
+          description: Distance parcourue durant la séance
+        objectifSession:
+          type: string
+          description: Objectif fixé pour la séance
+        niveauIntensite:
+          type: string
+          description: Niveau d’intensité de la séance
+        completer:
+          type: boolean
+          description: Indique si la séance est terminée
+        commentaire:
+          type: array
+          items:
+            type: string
+          description: Commentaires sur la séance
+    Utilisateur:
+      type: object
+      properties:
+        id:
+          type: number
+          description: Identifiant unique de l’utilisateur
+        username:
+          type: string
+          description: Nom d’utilisateur
+        password:
+          type: string
+          description: Mot de passe de l’utilisateur
+tags:
+  - name: Utilisateur
+    description: Operations sur les utilisateurs
+  - name: Seance
+    description: Operations sur les séances
+  - name: Jeton
+    description: Operations sur les jetons
+
+paths:
+  /fitness/Seance/{idUtilisateur}:
+    get:
+      security:
+        - bearerAuth: []
+      summary: Retourne la liste des seances d'un utilisateur
+      tags:
+        - Seance
+      parameters:
+        - name: idUtilisateur
+          in: path
+          required: true
+          schema:
+            type: number
+            format: int64
+          description: L'identifiant de l'utilisateur
+      responses:
+        200:
+          description: Retourne la liste des seances
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Seance:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Seance"
+        404:
+          description: Utilisateur introuvable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  example: Utilisateur introuvable
+      400:
+        description: idUtilisateur incorrect
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  example: idUtilisateur incorrect
+  /seance/{idSeance}/{idUtilisateur}:
+    get:
+      security:
+        - bearerAuth: []
+      summary: Retourne une seance
+      tags:
+        - Seance
+      parameters:
+        - name: idSeance
+          in: path
+          required: true
+          schema:
+            type: number
+            format: int64
+          description: L'identifiant de la séance
+        - name: idUtilisateur
+          in: path
+          required: true
+          schema:
+            type: number
+            format: int64
+          description: L'identifiant de l'utilisateur
+      responses:
+        200:
+          description: Retourne une seance
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Seance:
+                    $ref: "#/components/schemas/Seance"
+        400:
+          description: Requête invalide
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Requête invalide
+        404:
+          description: Utilisateur ou identifiant de la séance introuvable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Utilisateur introuvable
+        500:
+          description: Erreur interne du serveur
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Erreur interne du serveur
+  /MoyenneTempsIntensite/{type}/{niveauIntensite}/{idUtilisateur}:
+    get:
+      security:
+        - bearerAuth: []
+      summary: Retourne la moyenne des temps d'une séance
+      tags:
+        - Seance
+      parameters:
+        - name: type
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Le type d'entraînement
+        - name: niveauIntensite
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Le niveau d'intensité
+        - name: idUtilisateur
+          in: path
+          required: true
+          schema:
+            type: number
+            format: int64
+          description: L'identifiant de l'utilisateur
+      responses:
+        200:
+          description: Retourne la moyenne des temps d'une séance
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  moyenne:
+                    type: number
+                    description: La moyenne des temps d'une séance
+        400:
+          description: Requête invalide
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Requête invalide
+        404:
+          description: Utilisateur ou séance introuvable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Utilisateur introuvable
+        500:
+          description: Erreur interne du serveur
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Erreur interne du serveur
+  /GetTypeEntrainement/{type}/{idUtilisateur}:
+    get:
+      security:
+        - bearerAuth: []
+      summary: Retourne le type d'entraînement
+      tags:
+        - Seance
+      parameters:
+        - name: type
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Le type d'entraînement
+        - name: idUtilisateur
+          in: path
+          required: true
+          schema:
+            type: number
+            format: int64
+          description: L'identifiant de l'utilisateur
+      responses:
+        200:
+          description: Retourne le type d'entraînement
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  Seance:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Seance"
+        400:
+          description: Requête invalide
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Requête invalide
+        404:
+          description: Utilisateur ou séance introuvable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Utilisateur introuvable
+        500:
+          description: Erreur interne du serveur
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Erreur interne du serveur
+  /AjouterUtilisateur:
+    post:
+      summary: Ajouter un nouvel utilisateur
+      tags:
+        - Utilisateur
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                utilisateur:
+
+                username:
+                  type: string
+                  description: Nom de l'utilisateur
+                password:
+                  type: string
+                  description: Mot de passe de l'utilisateur
+              required:
+                - username
+                - password
+      responses:
+        200:
+          description: Utilisateur ajouté avec succès
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  nouvelleUtilisateur:
+                    type: object
+                    $ref: "#/components/schemas/Utilisateur"
+        400:
+          description: Données utilisateur invalides
+        500:
+          description: Erreur interne du serveur
+  /TousLesUtilisateurs:
+    get:
+      summary: Retourne tous les utilisateurs
+      tags:
+        - Utilisateur
+      responses:
+        200:
+          description: Retourne tous les utilisateurs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  utilisateurs:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Utilisateur"
+        404:
+          description: Utilisateur introuvable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Utilisateur introuvable
+  /AjouterSeance:
+    post:
+      summary: Ajouter une nouvelle séance
+      tags:
+        - Seance
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                seance:
+                  type: object
+                  properties:
+                    date:
+                      type: string
+                      format: date
+                      description: Date de la séance
+                    typeExercice:
+                      type: string
+                      description: Type d'entraînement
+                    duration:
+                      type: number
+                      description: Duree de la séance
+                    caloriesBrulees:
+                      type: number
+                      description: Calories brulées
+                    distance:
+                      type: string
+                      description: Distance parcourue
+                    objectifSession:
+                      type: string
+                      description: Objectif de la séance
+                    niveauIntensite:
+                      type: string
+                      description: Niveau d'intensité
+                    completer:
+                      type: boolean
+                      description: Indique si la séance est complètee
+                    commentaire:
+                      type: array
+                      items:
+                        type: string
+                        description: Commentaire de la séance
+
+      responses:
+        200:
+          description: Nouvelle séance ajouté avec succès
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  IdentifiantNouvelleSeance:
+                    type: number
+                    format: int64
+                    example: 1234
+        404:
+          description: Seance introuvable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Seance introuvable
+  /ModifierSeance/{id}:
+    put:
+      summary: Modifier une séance
+      tags:
+        - Seance
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                seance:
+                  type: object
+                  properties:
+                    date:
+                      type: string
+                      format: date
+                      description: Date de la séance
+                    typeExercice:
+                      type: string
+                      description: Type d'entraînement
+                    duration:
+                      type: number
+                      description: Duree de la séance
+                    caloriesBrulees:
+                      type: number
+                      description: Calories brulées
+                    distance:
+                      type: string
+                      description: Distance parcourue
+                    objectifSession:
+                      type: string
+                      description: Objectif de la séance
+                    niveauIntensite:
+                      type: string
+                      description: Niveau d'intensité
+                    completer:
+                      type: boolean
+                      description: Indique si la séance est complètee
+                    commentaire:
+                      type: array
+                      items:
+                        type: string
+                        description: Commentaire de la séance
+
+      responses:
+        200:
+          description: Nouvelle séance ajouté avec succès
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  IdentifiantNouvelleSeance:
+                    type: number
+                    format: int64
+                    example: 1234
+        404:
+          description: Seance introuvable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Seance introuvable
+  /SupprimerSeance/{id}/{idUtilisateur}:
+    delete:
+      summary: Supprimer une séance
+      tags:
+        - Seance
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: number
+          description: ID de la séance
+        - in: path
+          name: idUtilisateur
+          required: true
+          schema:
+            type: number
+          description: ID de l'utilisateur
+      responses:
+        200:
+          description: Séance supprimée avec succès
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  idSeance:
+                    type: number
+                    format: int64
+                    example: 1234
+        404:
+          description: Seance introuvable
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Seance introuvable
+  /generateToken/:
+    post:
+      summary: Générer un jeton JWT pour l'utilisateur
+      description: Valide les informations de l'utilisateur et retourne un token JWT si les informations sont correctes.
+      tags:
+        - Jeton
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                utilisateur:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+                      description: Le nom d'utilisateur
+                    password:
+                      type: string
+                      description: Le mot de passe
+              required:
+                - utilisateur
+      responses:
+        200:
+          description: Jeton généré avec succès
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    description: Le jeton JWT généré
+                  idUtilisateur:
+                    type: number
+                    description: L'identifiant de l'utilisateur
+                  username:
+                    type: string
+                    description: Le nom d'utilisateur
+
+        400:
+          description: Champs manquants ou invalides
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Champs manquants ou invalides
+        404:
+          description: Identifiants incorrects
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Identifiants incorrects

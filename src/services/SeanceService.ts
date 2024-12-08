@@ -46,10 +46,12 @@ function getAllUsers(): Promise<IUtilisateur[]> {
 
 async function updateOne(Seance: ISeance): Promise<ISeance | null> {
   const persists = await SeanceRepo.persists(Seance.identifiant)
+  console.log(persists);
+  console.log(Seance);
   if (!persists) {
       throw new RouteError(HttpStatusCodes.NOT_FOUND, SEANCE_NOT_FOUND_ERR);
   }
-  return SeanceRepo.update(Seance);
+  return SeanceRepo.updateSeance(Seance);
 }
 
 async function deleteSeance(id: number, idUtilisateur: number): Promise<boolean> {

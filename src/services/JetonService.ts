@@ -6,36 +6,31 @@ import jwt from 'jsonwebtoken';
 export const UTILISATEUR_NOT_FOUND_ERR = 'Utilisateur non trouvé';
 export const INVALID_PASSWORD_ERR = 'Mot de passe incorrect';
 
-async function generateToken(utilisateur: IUtilisateur): Promise<string> {
-  // Récupérer tous les utilisateurs de la base de données
+async function generateToken(utilisateur: IUtilisateur): Promise<{ token: string; id: number; username: string }> {
+
   const utilisateurBD = (await UserService.getAllUsers()).find(
     (user) => user.username === utilisateur.username
   );
 
-  // Vérifier si l'utilisateur existe
+ 
   if (!utilisateurBD) {
     throw new Error(UTILISATEUR_NOT_FOUND_ERR);
   }
 
-  console.log(utilisateurBD.password);
-  console.log(utilisateur.password);
-
-
-
-  // Vérifier si le mot de passe correspond
-  const isPasswordValid = await bcrypt.compare(utilisateur.password, utilisateurBD.password);
   
-  console.log(isPasswordValid);
+  const isPasswordValid = await bcrypt.compare(utilisateur.password, utilisateurBD.password);
+
   if (!isPasswordValid) {
     throw new Error(INVALID_PASSWORD_ERR);
   }
 
-  // Générer un token avec le `username` comme payload
-  return jwt.sign(
+  const token = jwt.sign(
     { username: utilisateur.username },
     process.env.JWT_SECRET as string,
-    { expiresIn: '1h' } // Durée de validité du token
+    { expiresIn: '1h' } 
   );
+
+  return { token, id: utilisateurBD.identifiant, username: utilisateurBD.username };
 }
 
 // **** Export default **** //
