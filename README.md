@@ -40,7 +40,7 @@ ApiFitness est une API conçue pour gérer les séances d'entraînement des util
     {
       "token": {
           "token": "string",
-          "id": int, // l'identifiant de l'utilisateur
+          "id": 0, // l'identifiant de l'utilisateur
           "username": "string"
       }
     }
