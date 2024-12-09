@@ -6,7 +6,7 @@ servers:
   - description: Local
     url: http://localhost:3000/fitness
   - description: Production
-    url: https://fitness-api.onrender.com/fitness
+    url: https://projetfinaledev3-api.onrender.com
 components:
   securitySchemes:
     bearerAuth:
