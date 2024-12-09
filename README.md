@@ -6,11 +6,11 @@ ApiFitness est une API conçue pour gérer les séances d'entraînement des util
 ### Information d'authentification
 Pour s'authentifier le chemin est /fitness/AjouterUtilisateur qui lui demande le nom d'utilisateur et le mot de passe dans le corps de la requete en JSON.
 Pour se connecter à son compte le chemin est /fitness/generatetoken qui lui a besoin du nom d'utilisateur et le mot de passe dans le corps de la requête en JSON.
-Cela te retourne {
+Cela te retourne `{
   "token": "string",
   "idUtilisateur": 0,
   "username": "string"
-}
+}`
 
 ### `npm run build`
 
