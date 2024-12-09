@@ -16,6 +16,9 @@ Cela te retourne `{
 ### Procédure d'installation
 #### Base de données
 - Crée une connection local de mongoDB ex: `mongodb://localhost:27017/` et la créer une base de données `Fitness` qui contient `Entrainement` et `Utilisateur` comme collection.
+- Importation des données de intiales de la base de données dans le dossier /Dev
+#### L'api
+- L'utilisation de `npm run dev` pour faire fonctionner l'api
 
 ### `npm start`
 
