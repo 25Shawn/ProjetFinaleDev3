@@ -1,34 +1,53 @@
-## Api Fitness
+# ApiFitness
 
-### Résumé
-ApiFitness est une API conçue pour gérer les séances d'entraînement des utilisateurs dans un site web de fitness. Le site web permet aux utilisateurs de suivre leurs performances, d'enregistrer leurs séances et d'obtenir des informations sur leur progression physique.
+## Résumé
+ApiFitness est une API conçue pour gérer les séances d'entraînement des utilisateurs dans un site web de fitness. L'application permet aux utilisateurs de suivre leurs performances, d'enregistrer leurs séances et d'obtenir des informations sur leur progression physique.
 
-### Information d'authentification
-Pour s'authentifier le chemin est /fitness/AjouterUtilisateur qui lui demande le nom d'utilisateur et le mot de passe dans le corps de la requete en JSON.
-Pour se connecter à son compte le chemin est /fitness/generatetoken qui lui a besoin du nom d'utilisateur et le mot de passe dans le corps de la requête en JSON.
+---
 
-Cela te retourne `{
-  "token": "string",
-  "idUtilisateur": 0,
-  "username": "string"
-}`
+## Information d'authentification
 
-### Procédure d'installation
-#### Base de données
-- Crée une connection local de mongoDB ex: `mongodb://localhost:27017/` et la créer une base de données `Fitness` qui contient `Entrainement` et `Utilisateur` comme collection.
-- Importation des données de intiales de la base de données dans le dossier /Dev
-#### L'api
-- L'utilisation de `npm run dev` pour faire fonctionner l'api
+- **Pour s'authentifier** :
+  - **Chemin** : `/fitness/AjouterUtilisateur`
+  - **Méthode** : `POST`
+  - **Description** : Cette route permet à un utilisateur de s'inscrire dans l'application en fournissant un nom d'utilisateur et un mot de passe.
+  - **Corps de la requête** (JSON) :
+    ```json
+    {
+      "username": "nouveau_nom_utilisateur",
+      "password": "mot_de_passe"
+    }
+    ```
 
-### `npm start`
+- **Pour se connecter** :
+  - **Chemin** : `/fitness/generatetoken`
+  - **Méthode** : `POST`
+  - **Description** : Cette route permet à un utilisateur de se connecter et d'obtenir un token JWT en utilisant son nom d'utilisateur et son mot de passe.
+  - **Corps de la requête** (JSON) :
+    ```json
+    {
+      "username": "nom_utilisateur",
+      "password": "mot_de_passe"
+    }
+    ```
 
-Run the production build (Must be built first).
+  - **Réponse** :
+    ```json
+    {
+      "token": "string",
+      "idUtilisateur": 0,
+      "username": "string"
+    }
+    ```
 
-### `npm start -- --env="name of env file" (default is production).`
+  **Note** : Le token JWT généré doit être utilisé pour les requêtes suivantes pour accéder aux ressources protégées.
 
-Run production build with a different env file.
+---
 
+## Procédure d'installation
 
-## Additional Notes
+### 1. Base de données
+- **MongoDB** : Créez une instance locale de MongoDB, par exemple :
+  ```bash
+  mongodb://localhost:27017/
 
-- If `npm run dev` gives you issues with bcrypt on MacOS you may need to run: `npm rebuild bcrypt --build-from-source`. 
