@@ -13,12 +13,12 @@ ApiFitness est une API conçue pour gérer les séances d'entraînement des util
   - **Description** : Cette route permet à un utilisateur de s'inscrire dans l'application en fournissant un nom d'utilisateur et un mot de passe.
   - **Corps de la requête** (JSON) :
     ```json
-{
-    "utilisateur":{
+    {
+      "utilisateur":{
         "username":"nom_utilisateur",
         "password":"mot_de_passe"
+      }
     }
-}
     ```
 
 - **Pour se connecter** :
