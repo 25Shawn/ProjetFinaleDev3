@@ -74,7 +74,7 @@ tags:
     description: Operations sur les jetons
 
 paths:
-  /fitness/Seance/{idUtilisateur}:
+  /fitness/TousLesSeances/{idUtilisateur}:
     get:
       security:
         - bearerAuth: []
@@ -121,7 +121,7 @@ paths:
                 message:
                   type: string
                   example: idUtilisateur incorrect
-  /seance/{idSeance}/{idUtilisateur}:
+  /fitness/Seance/{idSeance}/{idUtilisateur}:
     get:
       security:
         - bearerAuth: []
@@ -183,7 +183,7 @@ paths:
                   error:
                     type: string
                     example: Erreur interne du serveur
-  /MoyenneTempsIntensite/{type}/{niveauIntensite}/{idUtilisateur}:
+  /fitness/MoyenneTempsIntensite/{type}/{niveauIntensite}/{idUtilisateur}:
     get:
       security:
         - bearerAuth: []
@@ -251,7 +251,7 @@ paths:
                   error:
                     type: string
                     example: Erreur interne du serveur
-  /GetTypeEntrainement/{type}/{idUtilisateur}:
+  /fitness/TypeEntrainement/{type}/{idUtilisateur}:
     get:
       security:
         - bearerAuth: []
@@ -314,7 +314,7 @@ paths:
                   error:
                     type: string
                     example: Erreur interne du serveur
-  /AjouterUtilisateur:
+  /fitness/AjouterUtilisateur:
     post:
       summary: Ajouter un nouvel utilisateur
       tags:
@@ -352,7 +352,7 @@ paths:
           description: Données utilisateur invalides
         500:
           description: Erreur interne du serveur
-  /TousLesUtilisateurs:
+  /fitness/TousLesUtilisateurs:
     get:
       summary: Retourne tous les utilisateurs
       tags:
@@ -379,7 +379,7 @@ paths:
                   error:
                     type: string
                     example: Utilisateur introuvable
-  /AjouterSeance:
+  /fitness/AjouterSeance/{idUtilisateur}:
     post:
       summary: Ajouter une nouvelle séance
       tags:
@@ -449,7 +449,7 @@ paths:
                   error:
                     type: string
                     example: Seance introuvable
-  /ModifierSeance/{id}:
+  /fitness/ModifierSeance:
     put:
       summary: Modifier une séance
       tags:
@@ -519,7 +519,7 @@ paths:
                   error:
                     type: string
                     example: Seance introuvable
-  /SupprimerSeance/{id}/{idUtilisateur}:
+  /fitness/SupprimerSeance/{id}/{idUtilisateur}:
     delete:
       summary: Supprimer une séance
       tags:
