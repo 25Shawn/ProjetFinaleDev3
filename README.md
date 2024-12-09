@@ -40,12 +40,12 @@ ApiFitness est une API conçue pour gérer les séances d'entraînement des util
     {
       "token": {
           "token": "string",
-          "id": 0, // l'identifiant de l'utilisateur
+          "id": 0,
           "username": "string"
       }
     }
     ```
-
+  **Note** : Le id dans la réponse est l'identifiant de l'utilisateur
   **Note** : Le token JWT généré doit être utilisé pour les requêtes suivantes pour accéder aux ressources protégées.
 
 ---
