@@ -7,7 +7,7 @@ ApiFitness est une API conçue pour gérer les séances d'entraînement des util
 
 ## Information d'authentification
 
-- **Pour s'authentifier** :
+- **Pour se créer un compte** :
   - **Chemin** : `/fitness/AjouterUtilisateur`
   - **Méthode** : `POST`
   - **Description** : Cette route permet à un utilisateur de s'inscrire dans l'application en fournissant un nom d'utilisateur et un mot de passe.
