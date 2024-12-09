@@ -1,29 +1,16 @@
 ## Api Fitness
 
 ### Résumé
+ApiFitness est une API conçue pour gérer les séances d'entraînement des utilisateurs dans un site web de fitness. Le site web permet aux utilisateurs de suivre leurs performances, d'enregistrer leurs séances et d'obtenir des informations sur leur progression physique.
 
-
-## Available Scripts
-
-### `npm run dev`
-
-Run the server in development mode.
-
-### `npm test`
-
-Run all unit-tests with hot-reloading.
-
-### `npm test -- --testFile="name of test file" (i.e. --testFile=Users).`
-
-Run a single unit-test.
-
-### `npm run test:no-reloading`
-
-Run all unit-tests without hot-reloading.
-
-### `npm run lint`
-
-Check for linting errors.
+### Information d'authentification
+Pour s'authentifier le chemin est /fitness/AjouterUtilisateur qui lui demande le nom d'utilisateur et le mot de passe dans le corps de la requete en JSON.
+Pour se connecter à son compte le chemin est /fitness/generatetoken qui lui a besoin du nom d'utilisateur et le mot de passe dans le corps de la requête en JSON.
+Cela te retourne {
+  "token": "string",
+  "idUtilisateur": 0,
+  "username": "string"
+}
 
 ### `npm run build`
 
