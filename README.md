@@ -47,7 +47,29 @@ ApiFitness est une API conçue pour gérer les séances d'entraînement des util
 ## Procédure d'installation
 
 ### 1. Base de données
-- **MongoDB** : Créez une instance locale de MongoDB, par exemple :
+- **MongoDB** : Créez une connection locale de MongoDB, par exemple :
   ```bash
   mongodb://localhost:27017/
+
+### 2. L'api
+- **Clonage** : Cloner le dépot de l'API
+- **Installez les dépendances**
+-   ```bash
+  npm install
+- **Créer une variable d'environnement** : Créer une variable d'environement dans le dossier /env/developpement.env
+- Ex:
+  ```bash
+  MONGO_URI="mongodb://localhost:27017/Fitness?readPreference=primary&ssl=false"
+- **Lancer l'API en mode développement** : Utilisez la commande suivante pour démarrer l'API en mode développement
+- Ex:
+  ```bash
+  npm run dev
+- **Adresse de l'API** : L'API sera disponible à l'adresse suivante:
+  ```bash
+  http://localhost:3000
+
+  
+
+
+  
 
