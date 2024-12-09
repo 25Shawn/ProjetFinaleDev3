@@ -6,53 +6,42 @@ servers:
   - description: Local
     url: http://localhost:3000/fitness
   - description: Production
-    url: https://projetfinaledev3-api.onrender.com
+    url: https://projetfinaledev3-api.onrender.com/fitness
+
 components:
   securitySchemes:
     bearerAuth:
       type: http
       scheme: bearer
-      bearerFormat: JWT
   schemas:
     Seance:
       type: object
       properties:
         id:
           type: number
-          description: Identifiant unique de la séance
-        idUtilisateur:
-          type: number
-          description: Identifiant de l’utilisateur qui a fait la séance
+          format: int64
         date:
           type: string
-          format: date
-          description: Date de la séance
+          format: date-time
         typeExercice:
           type: string
-          description: Type d’exercice réalisé
         duration:
           type: string
-          description: Durée de la séance
         caloriesBrulees:
           type: number
-          description: Calories brûlées durant la séance
         distance:
           type: string
-          description: Distance parcourue durant la séance
         objectifSession:
           type: string
-          description: Objectif fixé pour la séance
         niveauIntensite:
           type: string
-          description: Niveau d’intensité de la séance
         completer:
           type: boolean
-          description: Indique si la séance est terminée
         commentaire:
           type: array
           items:
             type: string
-          description: Commentaires sur la séance
+
     Utilisateur:
       type: object
       properties:
@@ -74,11 +63,11 @@ tags:
     description: Operations sur les jetons
 
 paths:
-  /fitness/TousLesSeances/{idUtilisateur}:
+  /TousLesSeances/{idUtilisateur}:
     get:
       security:
         - bearerAuth: []
-      summary: Retourne la liste des seances d'un utilisateur
+      summary: Retourne toutes les séances
       tags:
         - Seance
       parameters:
@@ -91,7 +80,7 @@ paths:
           description: L'identifiant de l'utilisateur
       responses:
         200:
-          description: Retourne la liste des seances
+          description: Retourne toutes les séances
           content:
             application/json:
               schema:
@@ -101,6 +90,16 @@ paths:
                     type: array
                     items:
                       $ref: "#/components/schemas/Seance"
+        400:
+          description: Requête invalide
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Requête invalide
         404:
           description: Utilisateur introuvable
           content:
@@ -108,20 +107,11 @@ paths:
               schema:
                 type: object
                 properties:
-                  message:
+                  error:
                     type: string
-                  example: Utilisateur introuvable
-      400:
-        description: idUtilisateur incorrect
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                message:
-                  type: string
-                  example: idUtilisateur incorrect
-  /fitness/Seance/{idSeance}/{idUtilisateur}:
+                    example: Utilisateur introuvable
+
+  /Seance/{idSeance}/{idUtilisateur}:
     get:
       security:
         - bearerAuth: []
@@ -183,7 +173,7 @@ paths:
                   error:
                     type: string
                     example: Erreur interne du serveur
-  /fitness/MoyenneTempsIntensite/{type}/{niveauIntensite}/{idUtilisateur}:
+  /MoyenneTempsIntensite/{type}/{niveauIntensite}/{idUtilisateur}:
     get:
       security:
         - bearerAuth: []
@@ -251,7 +241,7 @@ paths:
                   error:
                     type: string
                     example: Erreur interne du serveur
-  /fitness/TypeEntrainement/{type}/{idUtilisateur}:
+  /TypeEntrainement/{type}/{idUtilisateur}:
     get:
       security:
         - bearerAuth: []
@@ -314,7 +304,7 @@ paths:
                   error:
                     type: string
                     example: Erreur interne du serveur
-  /fitness/AjouterUtilisateur:
+  /AjouterUtilisateur:
     post:
       summary: Ajouter un nouvel utilisateur
       tags:
@@ -352,7 +342,7 @@ paths:
           description: Données utilisateur invalides
         500:
           description: Erreur interne du serveur
-  /fitness/TousLesUtilisateurs:
+  /TousLesUtilisateurs:
     get:
       summary: Retourne tous les utilisateurs
       tags:
@@ -379,7 +369,7 @@ paths:
                   error:
                     type: string
                     example: Utilisateur introuvable
-  /fitness/AjouterSeance/{idUtilisateur}:
+  /AjouterSeance/{idUtilisateur}:
     post:
       summary: Ajouter une nouvelle séance
       tags:
@@ -449,7 +439,7 @@ paths:
                   error:
                     type: string
                     example: Seance introuvable
-  /fitness/ModifierSeance:
+  /ModifierSeance:
     put:
       summary: Modifier une séance
       tags:
@@ -519,7 +509,7 @@ paths:
                   error:
                     type: string
                     example: Seance introuvable
-  /fitness/SupprimerSeance/{id}/{idUtilisateur}:
+  /SupprimerSeance/{id}/{idUtilisateur}:
     delete:
       summary: Supprimer une séance
       tags:
@@ -561,7 +551,7 @@ paths:
                   error:
                     type: string
                     example: Seance introuvable
-  /fitness/generatetoken/:
+  /generatetoken/:
     post:
       summary: Générer un jeton JWT pour l'utilisateur
       description: Valide les informations de l'utilisateur et retourne un token JWT si les informations sont correctes.
