@@ -55,7 +55,7 @@ ApiFitness est une API conçue pour gérer les séances d'entraînement des util
 
 ### 1. Base de données
 - **Connexion** : Démarrez votre logiciel de connection de base de données de votre choix
-- Ex : Docker, Ampps etc.
+  -  Ex : Docker, Ampps etc.
 - **MongoDB** : Créez une connection locale de MongoDB, par exemple :
   ```bash
   mongodb://localhost:27017/
