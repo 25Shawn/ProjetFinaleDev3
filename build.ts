@@ -1,11 +1,10 @@
 /**
- * Remove old files, copy front-end ones.
+ * Remove old files, copy front-end and documentation files.
  */
 
 import fs from 'fs-extra';
 import logger from 'jet-logger';
 import childProcess from 'child_process';
-
 
 /**
  * Start
@@ -17,7 +16,9 @@ import childProcess from 'child_process';
     // Copy front-end files
     await copy('./src/public', './dist/public');
     await copy('./src/views', './dist/views');
-    // Copy back-end files
+    // Copy documentation.yaml
+    await copy(`src/doc`, './dist/doc/documentation.yaml');
+    // Compile TypeScript files
     await exec('tsc --build tsconfig.prod.json', './');
   } catch (err) {
     logger.err(err);
@@ -26,7 +27,7 @@ import childProcess from 'child_process';
 })();
 
 /**
- * Remove file
+ * Remove file.
  */
 function remove(loc: string): Promise<void> {
   return new Promise((res, rej) => {
@@ -52,7 +53,7 @@ function copy(src: string, dest: string): Promise<void> {
  */
 function exec(cmd: string, loc: string): Promise<void> {
   return new Promise((res, rej) => {
-    return childProcess.exec(cmd, {cwd: loc}, (err, stdout, stderr) => {
+    return childProcess.exec(cmd, { cwd: loc }, (err, stdout, stderr) => {
       if (!!stdout) {
         logger.info(stdout);
       }
