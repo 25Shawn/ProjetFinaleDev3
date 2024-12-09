@@ -54,8 +54,9 @@ ApiFitness est une API conçue pour gérer les séances d'entraînement des util
 - **MongoDB** : Créez une connection locale de MongoDB, par exemple :
   ```bash
   mongodb://localhost:27017/
-  
-- **MongoDB** : Importer les données initiales dans le dossier `/Dev` de mon API:
+- **MongoDB** : Créer une base de données avec le nom de `Fitness` et les collections `Entrainement` et `Utilisateur`
+
+- **MongoDB** : Importer les données initiales dans chaque collections respective qui se trouve dans le dossier `/Dev` de mon API:
 
 ### 2. L'api
 - **Clonage** : Cloner le dépot de l'API
@@ -73,7 +74,6 @@ ApiFitness est une API conçue pour gérer les séances d'entraînement des util
   http://localhost:3000
 - **Information des chemins** : Pour plus d'information sur les chemins allez dans votre navigateur web et écriver le chemin à la suite de l'adresse de l'API `/fitness/docs`
 
-   **Note** : .
 
 
   
