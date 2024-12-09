@@ -54,7 +54,7 @@ ApiFitness est une API conçue pour gérer les séances d'entraînement des util
 ### 2. L'api
 - **Clonage** : Cloner le dépot de l'API
 - **Installez les dépendances**
--   ```bash
+  ```bash
   npm install
 - **Créer une variable d'environnement** : Créer une variable d'environement dans le dossier /env/developpement.env
   ```bash
