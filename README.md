@@ -15,8 +15,7 @@ Cela te retourne `{
 
 ### Procédure d'installation
 #### Base de données
-
-Build the project for production.
+- Crée une connection local de mongoDB ex: `mongodb://localhost:27017/` et la créer une base de données `Fitness` qui contient `Entrainement` et `Utilisateur` comme collection.
 
 ### `npm start`
 
