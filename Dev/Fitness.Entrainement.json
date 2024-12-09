@@ -1,0 +1,208 @@
+[{
+  "_id": {
+    "$oid": "6740a1d5ec3c5376816925c1"
+  },
+  "identifiant": 188934107549,
+  "idUtilisateur": 902062684709,
+  "date": {
+    "$date": "2024-12-07T00:00:00.000Z"
+  },
+  "typeExercice": "Muscu",
+  "duration": "36 minutes",
+  "caloriesBrulees": 1232,
+  "distance": "5km",
+  "objectifSession": "asdad",
+  "niveauIntensite": "Elevee",
+  "completer": true,
+  "commentaire": [
+    ""
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6750f3d41ad0d68646459f6b"
+  },
+  "identifiant": 542953016945,
+  "idUtilisateur": 902062684709,
+  "date": {
+    "$date": "2024-12-06T00:00:00.000Z"
+  },
+  "typeExercice": "Course",
+  "duration": "45 min",
+  "caloriesBrulees": 500,
+  "distance": "5 km",
+  "objectifSession": "Améliorer l'endurance",
+  "niveauIntensite": "Moderee",
+  "completer": true,
+  "commentaire": [
+    ""
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6750f4721ad0d68646459f76"
+  },
+  "identifiant": 8968857840,
+  "idUtilisateur": 902062684709,
+  "date": {
+    "$date": "2024-11-22T00:00:00.000Z"
+  },
+  "typeExercice": "Course",
+  "duration": "45 min",
+  "caloriesBrulees": 500,
+  "distance": "5 km",
+  "objectifSession": "Améliorer l'endurance",
+  "niveauIntensite": "Élevée",
+  "completer": true,
+  "commentaire": [
+    "Bonne séance",
+    "Besoin d’améliorer la vitesse"
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6750fd74406b11941be48edb"
+  },
+  "identifiant": 517124911853,
+  "idUtilisateur": 902062684709,
+  "date": {
+    "$date": "2024-09-18T00:00:00.000Z"
+  },
+  "typeExercice": "Course",
+  "duration": "35 minutes",
+  "caloriesBrulees": 450,
+  "distance": "5 km",
+  "objectifSession": "Avoir une meilleure endurance",
+  "niveauIntensite": "Moderee",
+  "completer": true,
+  "commentaire": [
+    "Bonne session, mais fatigue en fin de parcours."
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67525cad26c94efedc512a41"
+  },
+  "identifiant": 816580048618,
+  "idUtilisateur": 902062684709,
+  "date": {
+    "$date": "2024-12-02T00:00:00.000Z"
+  },
+  "typeExercice": "Musculation",
+  "duration": "30 minutes",
+  "caloriesBrulees": 400,
+  "distance": "aucune",
+  "objectifSession": "Gagner de la masse",
+  "niveauIntensite": "Elevee",
+  "completer": true,
+  "commentaire": [
+    "Tres bien ete"
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67525d3426c94efedc512a49"
+  },
+  "identifiant": 591796728309,
+  "idUtilisateur": 902062684709,
+  "date": {
+    "$date": "2024-12-06T00:00:00.000Z"
+  },
+  "typeExercice": "Natation",
+  "duration": "30 minutes",
+  "caloriesBrulees": 1000,
+  "distance": "5 km",
+  "objectifSession": "Ameliorer mon cardio",
+  "niveauIntensite": "Elevee",
+  "completer": true,
+  "commentaire": [
+    "asdadadsad"
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6752670f880218e64d0a3f2d"
+  },
+  "identifiant": 867396630650,
+  "idUtilisateur": 902062684709,
+  "date": {
+    "$date": "2024-11-22T00:00:00.000Z"
+  },
+  "typeExercice": "Course",
+  "duration": "45 min",
+  "caloriesBrulees": 500,
+  "distance": "5 km",
+  "objectifSession": "Améliorer l'endurance",
+  "niveauIntensite": "Elevee",
+  "completer": true,
+  "commentaire": [
+    "Bonne séance",
+    "Besoin d’améliorer la vitesse"
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6754fd35025f24a1aa49b9c5"
+  },
+  "identifiant": 262427078718,
+  "idUtilisateur": 902062684709,
+  "date": {
+    "$date": "2024-12-06T00:00:00.000Z"
+  },
+  "typeExercice": "Course",
+  "duration": "30 minutes",
+  "caloriesBrulees": 500,
+  "distance": "10 km",
+  "objectifSession": "Cardio",
+  "niveauIntensite": "Moderee",
+  "completer": true,
+  "commentaire": [
+    "Sa bien ete"
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67560ef22112aaf041524b5e"
+  },
+  "identifiant": 99938640966,
+  "idUtilisateur": 123,
+  "date": {
+    "$date": "2024-12-08T21:26:10.910Z"
+  },
+  "typeExercice": "Running",
+  "duration": "30 mins",
+  "caloriesBrulees": 300,
+  "distance": "5km",
+  "objectifSession": "Endurance",
+  "niveauIntensite": "Moderee",
+  "completer": true,
+  "commentaire": [],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67560f0ddd3215adb573cfad"
+  },
+  "identifiant": 718380739248,
+  "idUtilisateur": 123,
+  "date": {
+    "$date": "2024-12-08T21:26:37.254Z"
+  },
+  "typeExercice": "Running",
+  "duration": "30 mins",
+  "caloriesBrulees": 300,
+  "distance": "5km",
+  "objectifSession": "Endurance",
+  "niveauIntensite": "Moderee",
+  "completer": true,
+  "commentaire": [],
+  "__v": 0
+}]
