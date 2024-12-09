@@ -561,7 +561,7 @@ paths:
                   error:
                     type: string
                     example: Seance introuvable
-  /generatetoken/:
+  /fitness/generatetoken/:
     post:
       summary: Générer un jeton JWT pour l'utilisateur
       description: Valide les informations de l'utilisateur et retourne un token JWT si les informations sont correctes.
