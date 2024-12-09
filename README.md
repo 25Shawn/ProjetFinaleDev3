@@ -45,7 +45,8 @@ ApiFitness est une API conçue pour gérer les séances d'entraînement des util
       }
     }
     ```
-  **Note** : Le id dans la réponse est l'identifiant de l'utilisateur
+  **Note** : Le id dans la réponse est l'identifiant de l'utilisateur.
+  
   **Note** : Le token JWT généré doit être utilisé pour les requêtes suivantes pour accéder aux ressources protégées.
 
 ---
