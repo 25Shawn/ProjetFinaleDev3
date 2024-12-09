@@ -65,6 +65,8 @@ ApiFitness est une API conçue pour gérer les séances d'entraînement des util
 - **Adresse de l'API** : L'API sera disponible à l'adresse suivante:
   ```bash
   http://localhost:3000
+- **Information des chemins** : Pour plus d'information sur les chemins allez dans votre navigateur web et écriver le chemin à la suite de l'adresse de l'API `/fitness/docs`
+
 
   
 
