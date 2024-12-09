@@ -13,7 +13,8 @@ Cela te retourne `{
   "username": "string"
 }`
 
-### `npm run build`
+### Procédure d'installation
+#### Base de données
 
 Build the project for production.
 
