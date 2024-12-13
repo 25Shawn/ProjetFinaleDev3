@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs';
 import { IUtilisateur } from '@src/models/Utilisateur';
-import UserService from './SeanceService'; // Service pour gérer les utilisateurs
+import UserService from './SeanceService';
 import jwt from 'jsonwebtoken';
 
 export const UTILISATEUR_NOT_FOUND_ERR = 'Utilisateur non trouvé';

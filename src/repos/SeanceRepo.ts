@@ -145,11 +145,10 @@ async function updateSeance(seance: ISeance): Promise<ISeance | null> {
 
   console.log("État de la connexion :", mongoose.connection.readyState);
 
-  // Effectuer la mise à jour
   const updatedSeance = await Seance.findOneAndUpdate(
     { identifiant: seance.identifiant },
     { $set: { ...seance } },
-    { new: true } // Retourner la nouvelle valeur après mise à jour
+    { new: true }
   );
 
   if (!updatedSeance) {
