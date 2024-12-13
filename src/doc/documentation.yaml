@@ -376,6 +376,14 @@ paths:
         - Seance
       security:
         - bearerAuth: []
+      parameters:
+        - name: idUtilisateur
+          in: path
+          required: true
+          schema:
+            type: number
+            format: int64
+          description: L'identifiant de l'utilisateur
       requestBody:
         required: true
         content:
@@ -394,7 +402,7 @@ paths:
                       type: string
                       description: Type d'entraînement
                     duration:
-                      type: number
+                      type: string
                       description: Duree de la séance
                     caloriesBrulees:
                       type: number
@@ -456,6 +464,14 @@ paths:
                 seance:
                   type: object
                   properties:
+                    identifiant:
+                      type: number
+                      format: int64
+                      description: L'identifiant de la séance
+                    idUtilisateur:
+                      type: number
+                      format: int64
+                      description: L'identifiant de l'utilisateur
                     date:
                       type: string
                       format: date
@@ -464,7 +480,7 @@ paths:
                       type: string
                       description: Type d'entraînement
                     duration:
-                      type: number
+                      type: string
                       description: Duree de la séance
                     caloriesBrulees:
                       type: number
