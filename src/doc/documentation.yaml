@@ -317,16 +317,16 @@ paths:
               type: object
               properties:
                 utilisateur:
-
-                username:
-                  type: string
-                  description: Nom de l'utilisateur
-                password:
-                  type: string
-                  description: Mot de passe de l'utilisateur
+                  type: object
+                  properties:
+                    username:
+                      type: string
+                      description: Nom de l'utilisateur
+                    password:
+                      type: string
+                      description: Mot de passe de l'utilisateur
               required:
-                - username
-                - password
+                - utilisateur
       responses:
         200:
           description: Utilisateur ajouté avec succès
