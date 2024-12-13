@@ -79,7 +79,7 @@ ApiFitness est une API conçue pour gérer les séances d'entraînement des util
   http://localhost:3000
 - **Information des chemins** : Pour plus d'information sur les chemins allez dans votre navigateur web et écriver le chemin à la suite de l'adresse de l'API `/fitness/docs`
 
-## Note
+## Jeu de tests
 Pour tester les données initiales dans le dossier `/Dev` de mon API, vous pouvez vous connecter : nom d'utilisateur : `Shawn` et mot de passe: `Shawn`
 
   
